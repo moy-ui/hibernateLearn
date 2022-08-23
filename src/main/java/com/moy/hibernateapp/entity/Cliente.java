@@ -3,7 +3,7 @@ package com.moy.hibernateapp.entity;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name="cliente")
+@Table(name="clientes")
 public class Cliente {
 
     @Id
@@ -51,7 +51,6 @@ public class Cliente {
     public void setFormaPago(String formaPago) {
         this.formaPago = formaPago;
     }
-
 
     @Override
     public String toString() {
