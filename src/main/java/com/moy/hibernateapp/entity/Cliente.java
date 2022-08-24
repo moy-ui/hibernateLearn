@@ -32,6 +32,11 @@ public class Cliente {
         return nombre;
     }
 
+    public Cliente(String nombre, String apellido) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+    }
+
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
