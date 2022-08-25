@@ -2,6 +2,8 @@ package com.moy.hibernateapp.entity;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDateTime;
+
 @Entity
 @Table(name="clientes")
 public class Cliente {
@@ -12,6 +14,9 @@ public class Cliente {
 
     private String nombre;
     private String apellido;
+
+    @Embedded
+    private Auditoria audit = new Auditoria();
 
 
     @Column(name = "forma_pago")
@@ -37,6 +42,8 @@ public class Cliente {
         this.apellido = apellido;
     }
 
+
+
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
@@ -57,11 +64,18 @@ public class Cliente {
         this.formaPago = formaPago;
     }
 
+
+
+
     @Override
     public String toString() {
+        LocalDateTime creado = this.audit != null? audit.getCreadoEn() : null;
+        LocalDateTime editado = this.audit != null? audit.getEditadoEn() : null;
         return "id=" + id +
                 ", nombre='" + nombre + '\'' +
                 ", apellido='" + apellido + '\'' +
-                ", formaPago='" + formaPago;
+                ", formaPago='" + formaPago +
+        ", Creado_EN='" +creado + '\'' +
+                ", Editado_En='" + editado + '\'';
     }
 }
